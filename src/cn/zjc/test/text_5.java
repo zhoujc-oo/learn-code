@@ -1,19 +1,8 @@
 package cn.zjc.test;
 
-public class text_5 {
-    public static void main(String[] args) {
-        for (int i=1; i<=5; i++) {
-            for (int j = 5; j >= i; j--) {
-                System.out.print("*");
+public interface text_5 {
+    void m1(int zhou);
+}
 
-            }
-
-            System.out.println();
-
-        }
-
-    }
-
-    }
 
 

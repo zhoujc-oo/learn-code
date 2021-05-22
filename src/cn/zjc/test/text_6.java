@@ -5,11 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-public class text_6 {
+public class text_6 extends text_7{
         public static void main(String[] args) {
 
             int i=1;
             int max, min;
+
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("请输入整数或输入0完成输入：");
             /**Scanner in = new Scanner(System.in);
@@ -25,6 +26,7 @@ public class text_6 {
             }
             max=i;
             min=i;
+
             while(i!= 0){
                 try {
                     Scanner io = new Scanner(System.in);
