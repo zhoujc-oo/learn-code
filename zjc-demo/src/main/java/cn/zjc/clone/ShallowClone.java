@@ -53,7 +53,7 @@ public class ShallowClone {
         }
 
 
-    //public static class Main {
+    //public static class MainTest {
         public static void main(String[] args) {
             ShallowClone sc = new ShallowClone(100.00);
             ShallowClone scClone = (ShallowClone) sc.clone();
