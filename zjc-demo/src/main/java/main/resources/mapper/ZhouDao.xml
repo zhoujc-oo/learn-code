@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace=".dao.ZhouDao">
+
+    <resultMap type=".entity.Zhou" id="ZhouMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="NAME" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="department" column="department" jdbcType="VARCHAR"/>
+        <result property="post" column="post" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ZhouMap">
+        select
+          id, NAME, age, department, post
+        from stubent.zhou
+        where  = #{}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ZhouMap">
+        select
+          id, NAME, age, department, post
+        from stubent.zhou
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ZhouMap">
+        select
+        id, NAME, age, department, post
+        from stubent.zhou
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and NAME = #{name}
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+            <if test="department != null and department != ''">
+                and department = #{department}
+            </if>
+            <if test="post != null and post != ''">
+                and post = #{post}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="" useGeneratedKeys="true">
+        insert into stubent.zhou(id, NAME, age, department, post)
+        values (#{id}, #{name}, #{age}, #{department}, #{post})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="" useGeneratedKeys="true">
+        insert into stubent.zhou(id, NAME, age, department, post)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id}, #{entity.name}, #{entity.age}, #{entity.department}, #{entity.post})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="" useGeneratedKeys="true">
+        insert into stubent.zhou(id, NAME, age, department, post)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.id}, #{entity.name}, #{entity.age}, #{entity.department}, #{entity.post})
+        </foreach>
+        on duplicate key update
+        id = values(id) , NAME = values(NAME) , age = values(age) , department = values(department) , post =
+        values(post)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update stubent.zhou
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="name != null and name != ''">
+                NAME = #{name},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="department != null and department != ''">
+                department = #{department},
+            </if>
+            <if test="post != null and post != ''">
+                post = #{post},
+            </if>
+        </set>
+        where = #{}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from stubent.zhou where  = #{}
+    </delete>
+
+</mapper>
+
