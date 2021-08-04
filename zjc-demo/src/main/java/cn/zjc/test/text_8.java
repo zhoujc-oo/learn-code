@@ -12,7 +12,6 @@ public class text_8 {
 
     }
 }
-
 class Person{
     public String name;
     public int age;

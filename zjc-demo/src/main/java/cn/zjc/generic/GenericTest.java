@@ -11,6 +11,9 @@ public class GenericTest {
       int n = add(p);
         System.out.println(n);
     }
+
+
+
     static int add(Pair<? extends Number> p){
         Number first = p.getFirst();
         Number last = p.getLast();
